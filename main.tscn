@@ -1,12 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dalynyb5co3c2"]
+[gd_scene load_steps=2 format=3 uid="uid://dalynyb5co3c2"]
 
-[sub_resource type="Gradient" id="Gradient_3aset"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4xi8u"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_axfol"]
-color_ramp = SubResource("Gradient_3aset")
-noise = SubResource("FastNoiseLite_4xi8u")
+[ext_resource type="Script" path="res://canvas.gd" id="1_ogbtn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -25,13 +19,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="GameTexture" type="TextureRect" parent="."]
+[node name="GameTexture" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("NoiseTexture2D_axfol")
-stretch_mode = 5
+script = ExtResource("1_ogbtn")
