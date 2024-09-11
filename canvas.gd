@@ -1,14 +1,27 @@
 extends Control
 
-var canvas = ImageTexture.new()
+var texture : ImageTexture
+var image : Image
+
 var width = 100
 var height = 100
 
+var window_size : Vector2i
+var window_size_prev : Vector2i
+
 func _ready() -> void:
-	canvas.set_size_override(Vector2(width, height))
+	image = Image.create_empty(width, height, false, Image.FORMAT_L8)
+	texture = ImageTexture.create_from_image(image)
+
 
 func _process(_delta: float) -> void:
-	queue_redraw()
+	window_size = get_window().size
+	texture.update(image)
+
+	if (window_size != window_size_prev):
+		window_size_prev = window_size
 
 func _draw() -> void:
-	draw_rect(Rect2(Vector2(0, 0), Vector2(width, height)), Color.WHITE)
+	image.set_pixel(5, 5, Color.WHITE)
+
+	draw_texture_rect(texture, Rect2(Vector2(0, 0), Vector2(500, 500)), false)
