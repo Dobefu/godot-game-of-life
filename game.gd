@@ -8,11 +8,15 @@ var window_size: Vector2i
 var window_size_prev: Vector2i
 
 func _ready() -> void:
+	super()
+
 	image = Image.create_empty(board_size, board_size, false, Image.FORMAT_L8)
 	image.fill(Color.WHITE)
 	texture = ImageTexture.create_from_image(image)
 
 func _process(_delta: float) -> void:
+	super(_delta)
+
 	window_size = get_window().size
 	texture.update(image)
 	queue_redraw()
@@ -22,8 +26,11 @@ func _process(_delta: float) -> void:
 		queue_redraw()
 
 func _draw() -> void:
-	image.set_pixel(5, 5, Color.GRAY)
-	image.set_pixel(6, 6, Color.GRAY)
+	image.fill(Color.WHITE)
+
+	for i in range(0, board_size ** 2):
+		if board[i]:
+			image.set_pixel((i % board_size), floori(float(i) / board_size), Color.BLACK)
 
 	var draw_size: float = min(window_size.x, window_size.y)
 	var draw_offset_x: float = float(window_size.x) / 2 - draw_size / 2
