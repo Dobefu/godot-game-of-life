@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dalynyb5co3c2"]
 
-[ext_resource type="Script" path="res://canvas.gd" id="1_ogbtn"]
+[ext_resource type="Script" path="res://game.gd" id="1_ogbtn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

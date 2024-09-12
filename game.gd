@@ -1,16 +1,14 @@
-extends Control
+extends "res://game-base.gd"
+class_name Game
 
 var texture: ImageTexture
 var image: Image
-
-var width: int = 10
-var height: int = 10
 
 var window_size: Vector2i
 var window_size_prev: Vector2i
 
 func _ready() -> void:
-	image = Image.create_empty(width, height, false, Image.FORMAT_L8)
+	image = Image.create_empty(board_size, board_size, false, Image.FORMAT_L8)
 	image.fill(Color.WHITE)
 	texture = ImageTexture.create_from_image(image)
 
