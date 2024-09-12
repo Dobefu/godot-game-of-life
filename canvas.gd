@@ -1,13 +1,13 @@
 extends Control
 
-var texture : ImageTexture
-var image : Image
+var texture: ImageTexture
+var image: Image
 
-var width = 100
-var height = 100
+var width = 10
+var height = 10
 
-var window_size : Vector2i
-var window_size_prev : Vector2i
+var window_size: Vector2i
+var window_size_prev: Vector2i
 
 func _ready() -> void:
 	image = Image.create_empty(width, height, false, Image.FORMAT_L8)
@@ -28,4 +28,4 @@ func _draw() -> void:
 	image.set_pixel(6, 6, Color.GRAY)
 
 	var draw_size = min(window_size.x, window_size.y)
-	draw_texture_rect(texture, Rect2(Vector2(window_size.x / 2 - draw_size / 2, window_size.y / 2 - draw_size / 2), Vector2i(draw_size, draw_size)), false)
+	draw_texture_rect(texture, Rect2(Vector2(float(window_size.x) / 2 - draw_size / 2, float(window_size.y) / 2 - draw_size / 2), Vector2i(draw_size, draw_size)), false)
