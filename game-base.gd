@@ -11,6 +11,7 @@ var board: Array
 
 var state: State
 var tick_delta: float = 0
+var max_delay: float = 1
 
 func _ready() -> void:
 	board = []
@@ -24,13 +25,19 @@ func _ready() -> void:
 	# TODO Replace once a pause button has been implemented.
 	state = State.PLAYING
 
+func _on_speed_slider_value_changed(value):
+	max_delay = max(.01, 1 - value)
+
 func _process(_delta: float) -> void:
 	tick_delta += _delta
 
-	if (tick_delta < 1):
+	if (tick_delta < max_delay):
 		return
 
-	tick_delta = tick_delta - 1
+	tick_delta = tick_delta - max_delay
+
+	if max_delay > _delta:
+		tick_delta = 0
 
 	var has_changed: bool = false
 	var new_board: Array = board.duplicate()
