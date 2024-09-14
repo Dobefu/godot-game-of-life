@@ -32,7 +32,7 @@ func _draw() -> void:
 		if board[i]:
 			image.set_pixel((i % board_size), floori(float(i) / board_size), Color.BLACK)
 
-	var draw_size: float = min(window_size.x - 75, window_size.y - 75)
+	var draw_size: float = min(window_size.x, window_size.y - 75)
 	var draw_offset_x: float = float(window_size.x) / 2 - draw_size / 2
-	var draw_offset_y: float = (float(window_size.y) / 2 - draw_size / 2) - 75
+	var draw_offset_y: float = (float(window_size.y) / 2 - draw_size / 2) - (75 / 2.0)
 	draw_texture_rect(texture, Rect2(Vector2(draw_offset_x, draw_offset_y), Vector2(draw_size, draw_size)), false)
