@@ -26,23 +26,23 @@ func _ready() -> void:
 	state = State.PLAYING
 
 func _on_speed_slider_value_changed(value):
-	max_delay = max(.01, 1 - value)
+	max_delay = 1 - value
 
 func _process(_delta: float) -> void:
 	tick_delta += _delta
 
-	if (tick_delta < max_delay):
+	if (max_delay > 0 && tick_delta < max_delay):
 		return
 
 	tick_delta = tick_delta - max_delay
 
-	if max_delay > _delta:
+	if (max_delay > _delta):
 		tick_delta = 0
 
 	var has_changed: bool = false
 	var new_board: Array = board.duplicate()
 
-	if state == State.PLAYING:
+	if (state == State.PLAYING):
 		for i in range(0, board_size ** 2):
 			var live_neighbours: int = 0
 			var coords_to_check: Array = [
