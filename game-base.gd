@@ -22,8 +22,14 @@ func _ready() -> void:
 	board[34] = true
 	board[35] = true
 
-	# TODO Replace once a pause button has been implemented.
-	state = State.PLAYING
+	state = State.PAUSED
+
+func _on_check_button_toggled(is_checked: bool) -> void:
+	if (is_checked):
+		state = State.PLAYING
+		return
+
+	state = State.PAUSED
 
 func _on_speed_slider_value_changed(value):
 	max_delay = 1 - value
