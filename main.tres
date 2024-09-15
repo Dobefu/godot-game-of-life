@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c67witrlncpfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbjjb"]
+bg_color = Color(1, 1, 1, 0.266667)
+
+[sub_resource type="SystemFont" id="SystemFont_g3i71"]
+
+[resource]
+default_font = SubResource("SystemFont_g3i71")
+default_font_size = 24
+BoxContainer/constants/separation = 24
+CheckButton/constants/h_separation = 12
+MarginContainer/constants/margin_bottom = 24
+MarginContainer/constants/margin_left = 24
+MarginContainer/constants/margin_right = 24
+MarginContainer/constants/margin_top = 24
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_qbjjb")

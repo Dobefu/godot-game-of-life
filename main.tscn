@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dalynyb5co3c2"]
+[gd_scene load_steps=3 format=3 uid="uid://dalynyb5co3c2"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ogbtn"]
+[ext_resource type="Theme" uid="uid://c67witrlncpfx" path="res://main.tres" id="2_5fwfn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -29,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ogbtn")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -38,16 +39,31 @@ anchor_bottom = 1.0
 offset_top = -100.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme = ExtResource("2_5fwfn")
 
-[node name="SpeedSlider" type="HSlider" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+button_pressed = true
+action_mode = 0
+text = "Play"
+
+[node name="SpeedSlider" type="HSlider" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
 max_value = 1.0
 step = 0.0
 scrollable = false
-metadata/_edit_group_ = true
+tick_count = 2
 
-[connection signal="value_changed" from="MarginContainer/SpeedSlider" to="Game" method="_on_speed_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/HBoxContainer/SpeedSlider" to="Game" method="_on_speed_slider_value_changed"]
