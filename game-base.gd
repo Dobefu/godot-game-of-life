@@ -6,7 +6,7 @@ enum State {
 	PAUSED,
 }
 
-var board_size: int = 10
+var board_size: int = 50
 var board: Array
 
 var state: State
@@ -18,10 +18,6 @@ func _ready() -> void:
 	board = []
 	board.resize(board_size ** 2)
 	board.fill(false)
-
-	board[33] = true
-	board[34] = true
-	board[35] = true
 
 	state = State.PAUSED
 
