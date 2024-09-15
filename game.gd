@@ -8,18 +8,18 @@ var window_size: Vector2i
 var window_size_prev: Vector2i
 
 var gui_height: float = 100
+var play_button: CheckButton
 
 func _ready() -> void:
 	super()
+
+	play_button = $'/root/Main/PanelContainer/MarginContainer/HBoxContainer/PlayButton'
 
 	image = Image.create_empty(board_size, board_size, false, Image.FORMAT_L8)
 	_draw()
 	texture = ImageTexture.create_from_image(image)
 
 func _input(event):
-	if (state != State.PAUSED):
-		return
-
 	if (!event is InputEventMouseButton || !event.pressed):
 		return
 
@@ -42,6 +42,10 @@ func _input(event):
 	_draw()
 	texture.update(image)
 	queue_redraw()
+
+	if (state != State.PAUSED):
+		state = State.PAUSED
+		play_button.button_pressed = false
 
 func _process(_delta: float) -> void:
 	super(_delta)

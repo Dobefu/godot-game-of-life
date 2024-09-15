@@ -21,7 +21,7 @@ func _ready() -> void:
 
 	state = State.PAUSED
 
-func _on_check_button_toggled(is_checked: bool) -> void:
+func _on_play_button_toggled(is_checked: bool) -> void:
 	if (is_checked):
 		state = State.PLAYING
 		return
