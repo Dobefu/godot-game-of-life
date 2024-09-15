@@ -17,6 +17,9 @@ func _ready() -> void:
 	texture = ImageTexture.create_from_image(image)
 
 func _input(event):
+	if (state != State.PAUSED):
+		return
+
 	if (!event is InputEventMouseButton || !event.pressed):
 		return
 
