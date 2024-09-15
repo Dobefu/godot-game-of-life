@@ -11,15 +11,17 @@ func _ready() -> void:
 	super()
 
 	image = Image.create_empty(board_size, board_size, false, Image.FORMAT_L8)
-	image.fill(Color.WHITE)
+	_draw()
 	texture = ImageTexture.create_from_image(image)
 
 func _process(_delta: float) -> void:
 	super(_delta)
 
 	window_size = get_window().size
-	texture.update(image)
-	queue_redraw()
+
+	if (has_changed):
+		texture.update(image)
+		queue_redraw()
 
 	if (window_size != window_size_prev):
 		window_size_prev = window_size

@@ -12,6 +12,7 @@ var board: Array
 var state: State
 var tick_delta: float = 0
 var max_delay: float = 1
+var has_changed: bool = false
 
 func _ready() -> void:
 	board = []
@@ -45,7 +46,7 @@ func _process(_delta: float) -> void:
 	if (max_delay > _delta):
 		tick_delta = 0
 
-	var has_changed: bool = false
+	has_changed = false
 	var new_board: Array = board.duplicate()
 
 	if (state == State.PLAYING):
@@ -83,4 +84,3 @@ func _process(_delta: float) -> void:
 
 	if has_changed:
 		board = new_board
-		queue_redraw()
